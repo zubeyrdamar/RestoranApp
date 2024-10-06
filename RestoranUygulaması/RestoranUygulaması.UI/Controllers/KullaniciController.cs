@@ -29,7 +29,10 @@ namespace RestoranUygulaması.UI.Controllers
 
             if (kullanici != null)
             {
-                return View("~/Views/Home/Index.cshtml");
+                // Kullanıcı Id saklıyoruz
+                HttpContext.Session.SetString("KullaniciId", kullanici.Id.ToString());
+
+                return View("~/Views/Siparisler/Menu.cshtml");
             }
 
             return View("~/Views/Home/Index.cshtml");

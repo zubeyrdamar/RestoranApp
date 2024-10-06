@@ -9,15 +9,9 @@ namespace RestoranUygulaması.Entities
     public class Siparis
     {
         public int Id { get; set; }
-        public Kullanici kullanici { get; set; }
-        public List<Yemek> SiparisEdilenYemekler { get; set; }
+        public Guid KullaniciId { get; set; }
+        public Yemek SiparisEdilenYemek { get; set; }
         public DateTime SiparisTarihi { get; set; }
         public bool IptalDurumu { get; set; }
-
-        public Siparis()
-        {
-            SiparisEdilenYemekler = new List<Yemek>();
-            IptalDurumu = false;
-        }
     }
 }

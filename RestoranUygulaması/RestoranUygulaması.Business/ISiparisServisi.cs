@@ -9,6 +9,8 @@ namespace RestoranUygulaması.Business
 {
     public interface ISiparisServisi
     {
-        
+        void SiparisOlustur(Guid kullaniciId, Yemek yemek);
+        List<Siparis> KullaniciSiparisleri(Kullanici kullanici);
+        void CancelOrder(int siparisId);
     }
 }

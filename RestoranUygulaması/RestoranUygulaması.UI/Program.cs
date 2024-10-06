@@ -5,6 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Session servisini ekleyin
+builder.Services.AddDistributedMemoryCache(); // In-memory cache kullanýlýr
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Oturumun zaman aþýmý
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true; // GDPR gereksinimleri için önemli
+});
+
+
 // KullaniciServisi'ni DI sistemine ekleyelim
 builder.Services.AddScoped<IKullaniciServisi, KullaniciServisi>();
 builder.Services.AddScoped<ISiparisServisi, SiparisServisi>();
@@ -19,6 +29,9 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Session middleware'i ekleyin
+app.UseSession();
 
 app.UseAuthorization();
 

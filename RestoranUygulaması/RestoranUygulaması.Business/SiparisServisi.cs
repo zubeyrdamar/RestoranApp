@@ -11,13 +11,13 @@ namespace RestoranUygulaması.Business
     {
         private static List<Siparis> siparisler = new List<Siparis>();
 
-        public void SiparisOlustur(Kullanici kullanici, List<Yemek> yemekler)
+        public void SiparisOlustur(Guid kullaniciId, Yemek yemek)
         {
             var siparis = new Siparis
             {
                 Id = siparisler.Count + 1,
-                kullanici = kullanici,
-                SiparisEdilenYemekler = yemekler,
+                KullaniciId = kullaniciId,
+                SiparisEdilenYemek = yemek,
                 SiparisTarihi = DateTime.Now
             };
 
@@ -26,7 +26,7 @@ namespace RestoranUygulaması.Business
 
         public List<Siparis> KullaniciSiparisleri(Kullanici kullanici)
         {
-            return siparisler.Where(o => o.kullanici.Id == kullanici.Id).ToList();
+            return siparisler.Where(o => o.KullaniciId == kullanici.Id).ToList();
         }
 
         public void CancelOrder(int siparisId)

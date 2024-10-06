@@ -1,0 +1,72 @@
+﻿@model RestoranUygulaması.UI.Models.SiparisOlusturViewModel
+
+<h1>Menü</h1>
+<br />
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr scope="col">
+                    <td>#</td>
+                    <td>Ad</td>
+                    <td>Fiyat</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scop="row">
+                    <td style="width: 200px"><img src="@Url.Content("~/img/hamburger.jpg")" width="180" /></td>
+                    <td>Hamburger</td>
+                    <td>150</td>
+                    <td>
+                        <form asp-controller="Siparis" asp-action="SiparisEt" method="post" class="mt-3">
+
+                            <input asp-for="Ad" value="Hamburger" hidden />
+                            <input asp-for="Fiyat" value="150" hidden />
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-warning">Sipariş Et</button>
+                            </div>
+
+                        </form>
+                    </td>
+                </tr>
+                <tr scop="row">
+                    <td style="width: 200px"><img src="@Url.Content("~/img/pizza.jpg")" width="180" /></td>
+                    <td>Pizza</td>
+                    <td>200</td>
+                    <td>
+                        <form asp-controller="Siparis" asp-action="SiparisEt" method="post" class="mt-3">
+
+                            <input asp-for="Ad" value="Pizza" hidden />
+                            <input asp-for="Fiyat" value="200" hidden />
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-warning">Sipariş Et</button>
+                            </div>
+
+                        </form>
+                    </td>
+                </tr>
+                <tr scop="row">
+                    <td style="width: 200px"><img src="@Url.Content("~/img/sandwich.jpg")" width="180" /></td>
+                    <td>Sandiviç</td>
+                    <td>100</td>
+                    <td>
+                        <form asp-controller="Siparis" asp-action="SiparisEt" method="post" class="mt-3">
+
+                            <input asp-for="Ad" value="Sandiviç" hidden/>
+                            <input asp-for="Fiyat" value="100" hidden />
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-warning">Sipariş Et</button>
+                            </div>
+
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
