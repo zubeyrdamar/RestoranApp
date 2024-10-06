@@ -24,12 +24,12 @@ namespace RestoranUygulaması.Business
             siparisler.Add(siparis);
         }
 
-        public List<Siparis> KullaniciSiparisleri(Kullanici kullanici)
+        public List<Siparis> KullaniciSiparisleri(Guid kullaniciId)
         {
-            return siparisler.Where(o => o.KullaniciId == kullanici.Id).ToList();
+            return siparisler.Where(o => o.KullaniciId == kullaniciId).ToList();
         }
 
-        public void CancelOrder(int siparisId)
+        public void Siparisİptal(int siparisId)
         {
             var siparis = siparisler.FirstOrDefault(o => o.Id == siparisId);
             if (siparis != null)

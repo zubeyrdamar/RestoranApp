@@ -1,0 +1,77 @@
+﻿@model List<RestoranUygulaması.Entities.Siparis>
+@{
+    decimal toplamTutar = 0;
+}
+<h1>Siparişler</h1>
+<br />
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr scope="col">
+                    <td>#</td>
+                    <td>Ad</td>
+                    <td>Fiyat</td>
+                    <td>Sipariş Tarihi</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var siparis in Model)
+                {
+                    var img = "";
+                    @if (@siparis.SiparisEdilenYemek.Ad == "Hamburger")
+                    {
+                        img = "~/img/hamburger.jpg";
+                    }
+                    @if (@siparis.SiparisEdilenYemek.Ad == "Pizza")
+                    {
+                        img = "~/img/pizza.jpg";
+                    }
+                    @if (@siparis.SiparisEdilenYemek.Ad == "Sandiviç")
+                    {
+                        img = "~/img/sandwich.jpg";
+                    }
+
+                    @if(siparis.IptalDurumu == true)
+                    {
+                        toplamTutar += siparis.SiparisEdilenYemek.Fiyat;
+                    }
+                    
+                    <tr>
+                        <td><img src="@Url.Content(img)" width="180" /></td>
+                        <td>@siparis.SiparisEdilenYemek.Ad</td>
+                        <td>@siparis.SiparisEdilenYemek.Fiyat</td>
+                        <td>@siparis.SiparisTarihi.ToString("dd/MM/yyyy")</td>
+
+                        <td>
+                            @if (@siparis.IptalDurumu == false)
+                            {
+                                <form asp-controller="Siparis" asp-action="SiparisİptalEt" method="post" class="mt-3">
+
+                                    <input name="siparisId" value="@siparis.Id" hidden />
+
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-danger">Sipariş İptal Et</button>
+                                    </div>
+
+                                </form>
+                            }
+                            else
+                            {
+                                <p>Sipariş İptal Edilmiş</p>
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div>
+            Sipariş Toplam Tutarı: @toplamTutar.ToString("C")
+        </div>
+    </div>
+</div>

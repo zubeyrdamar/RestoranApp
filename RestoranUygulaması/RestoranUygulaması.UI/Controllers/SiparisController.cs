@@ -30,7 +30,21 @@ namespace RestoranUygulaması.UI.Controllers
             
             _siparisServisi.SiparisOlustur(Guid.Parse(HttpContext.Session.GetString("KullaniciId")), yemek);
 
-            return View("~/Views/Siparisler/Menu.cshtml");
+            return View("~/Views/Siparis/Menu.cshtml");
+        }
+
+        public IActionResult Siparisler()
+        {
+            List<Siparis> siparisler = _siparisServisi.KullaniciSiparisleri(Guid.Parse(HttpContext.Session.GetString("KullaniciId")));
+            return View(siparisler);
+        }
+
+        [HttpPost]
+        public IActionResult SiparisİptalEt(int siparisId)
+        {
+            _siparisServisi.Siparisİptal(siparisId);
+            List<Siparis> siparisler = _siparisServisi.KullaniciSiparisleri(Guid.Parse(HttpContext.Session.GetString("KullaniciId")));
+            return View("~/Views/Siparis/Siparisler.cshtml", siparisler);
         }
     }
 }

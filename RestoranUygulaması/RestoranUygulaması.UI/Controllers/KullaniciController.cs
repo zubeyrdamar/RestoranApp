@@ -32,7 +32,7 @@ namespace RestoranUygulaması.UI.Controllers
                 // Kullanıcı Id saklıyoruz
                 HttpContext.Session.SetString("KullaniciId", kullanici.Id.ToString());
 
-                return View("~/Views/Siparisler/Menu.cshtml");
+                return View("~/Views/Siparis/Menu.cshtml");
             }
 
             return View("~/Views/Home/Index.cshtml");
@@ -56,5 +56,12 @@ namespace RestoranUygulaması.UI.Controllers
 
             return View("~/Views/Home/Index.cshtml");
         }
+
+        public IActionResult CikisYap()
+        {
+            HttpContext.Session.SetString("KullaniciId", "");
+            return View("~/Views/Home/Index.cshtml");
+        }
+
     }
 }
