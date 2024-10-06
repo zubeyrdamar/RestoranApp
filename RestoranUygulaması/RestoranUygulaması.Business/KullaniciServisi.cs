@@ -10,7 +10,7 @@ namespace RestoranUygulaması.Business
     public class KullaniciServisi : IKullaniciServisi
     {
         // Sahte kullanıcı listesi
-        private List<Kullanici> kullanicilar = new List<Kullanici>
+        private static List<Kullanici> kullanicilar = new List<Kullanici>
         {
             new Kullanici { Id = Guid.NewGuid(), Ad = "admin", Sifre = "1234" },
         };

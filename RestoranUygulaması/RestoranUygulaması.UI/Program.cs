@@ -1,7 +1,13 @@
+using RestoranUygulamasý.Business;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// KullaniciServisi'ni DI sistemine ekleyelim
+builder.Services.AddScoped<IKullaniciServisi, KullaniciServisi>();
+builder.Services.AddScoped<ISiparisServisi, SiparisServisi>();
 
 var app = builder.Build();
 

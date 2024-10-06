@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RestoranUygulaması.Business\RestoranUygulaması.Business.csproj" />
+    <ProjectReference Include="..\RestoranUygulaması.Entities\RestoranUygulaması.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
