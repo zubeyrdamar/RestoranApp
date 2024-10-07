@@ -35,7 +35,7 @@
                         img = "~/img/sandwich.jpg";
                     }
 
-                    @if(siparis.IptalDurumu == true)
+                    @if(siparis.IptalDurumu == false)
                     {
                         toplamTutar += siparis.SiparisEdilenYemek.Fiyat;
                     }
@@ -71,7 +71,7 @@
         </table>
 
         <div>
-            Sipariş Toplam Tutarı: @toplamTutar.ToString("C")
+            Siparişler Toplam Tutarı: @toplamTutar.ToString("C")
         </div>
     </div>
 </div>

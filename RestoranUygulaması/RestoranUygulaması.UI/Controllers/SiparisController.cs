@@ -30,6 +30,7 @@ namespace RestoranUygulaması.UI.Controllers
             
             _siparisServisi.SiparisOlustur(Guid.Parse(HttpContext.Session.GetString("KullaniciId")), yemek);
 
+            ViewBag.Message = "Siparişiniz Alınmıştır";
             return View("~/Views/Siparis/Menu.cshtml");
         }
 

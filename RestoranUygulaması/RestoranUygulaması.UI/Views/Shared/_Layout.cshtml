@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +22,18 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-end">
-                        @* @if (HttpContext.Session.GetString("KullaniciId") != null)
-                        { *@
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("KullaniciId") != "logout" && HttpContextAccessor.HttpContext.Session.GetString("KullaniciId") != null)
+                        { 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Siparis" asp-action="Siparisler">Sepete Git</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Siparis" asp-action="Menu">Menü</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Siparis" asp-action="Siparisler">Siparişler</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Kullanici" asp-action="CikisYap">Çıkış Yap</a>
                             </li>
-                        @* } *@
+                        }
                     </ul>
                 </div>
             </div>

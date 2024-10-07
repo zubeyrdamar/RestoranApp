@@ -14,6 +14,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true; // GDPR gereksinimleri için önemli
 });
 
+builder.Services.AddHttpContextAccessor();
+
 // KullaniciServisi'ni DI sistemine ekleyelim
 builder.Services.AddScoped<IKullaniciServisi, KullaniciServisi>();
 builder.Services.AddScoped<ISiparisServisi, SiparisServisi>();

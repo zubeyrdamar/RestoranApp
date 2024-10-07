@@ -59,7 +59,7 @@ namespace RestoranUygulaması.UI.Controllers
 
         public IActionResult CikisYap()
         {
-            HttpContext.Session.SetString("KullaniciId", "");
+            HttpContext.Session.SetString("KullaniciId", "logout");
             return View("~/Views/Home/Index.cshtml");
         }
 
